@@ -86,3 +86,14 @@ section.page-videos ul.videos .video {
 section.page-videos ul.videos .pitch {
   font-size: 0.7rem;
 }
+[data-parallax] {
+  overflow: hidden;
+}
+[data-parallax] [data-parallax-scroll] {
+  position: relative;
+}
+.debug section,
+.debug header {
+  border: 1px solid red;
+  box-sizing: border-box;
+}

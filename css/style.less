@@ -1,8 +1,20 @@
 @fontLato: 'Lato', sans-serif;
 @fontMerr: 'Merriweather', serif;
 
+@keyframes backgrounds {
+	0% {
+		background-image: url(../images/background-1.png);
+	}
+	50% {
+		background-image: url(http://poesie.tableau-noir.net/images/montagne01.jpg);
+	}
+	100% {
+		background-image: url(../images/background-1.png);
+	}
+}
+
 body {
-	background: url(../images/background-1.png) no-repeat center center fixed; 
+	background: url(../images/background-1.png) no-repeat center center fixed;
 	background-size: cover;
 	padding: 0;
 	margin: 0;
@@ -10,6 +22,8 @@ body {
 	font-size: 100%;
 	font-weight: 300;
 	color: #ffffff;
+	transition: background-image 1s ease-in-out;
+	animation: backgrunds 10s;
 }
 
 nav {
@@ -88,7 +102,13 @@ section {
 	ul.stuff-list {
 		list-style: none;
 		padding: 0;
-		margin: 0;		
+		margin: 0;
+		> li {
+			display: inline-block;
+		}		
+		.pitch {
+			font-size: 0.7rem;
+		}
 	}
 	&.page-bio {
 		p {
@@ -101,9 +121,11 @@ section {
 			.video {
 				max-width: 335px;
 			}
-			.pitch {
-				font-size: 0.7rem;
-			}
+		}
+	}
+	&.page-music {
+		li.sound {
+			width: 30%;
 		}
 	}
 	&.page-music {
@@ -115,6 +137,9 @@ section {
 	overflow: hidden;
 	[data-parallax-scroll] {
 		position: relative;
+		transition-property: top;
+		transition-duration: 0.1s;
+		transition-timing-function: ease;
 	}
 }
 

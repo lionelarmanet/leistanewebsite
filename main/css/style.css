@@ -185,3 +185,7 @@ section.page-music li.sound {
   border: 1px solid red;
   box-sizing: border-box;
 }
+
+.fb-follow {
+  padding-top: 30px;
+}

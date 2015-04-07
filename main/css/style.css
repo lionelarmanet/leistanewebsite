@@ -7,23 +7,6 @@ body {
   color: #ffffff;
   background: black;
 }
-@-webkit-keyframes carousel {
-  0% {
-    opacity: 1;
-  }
-  17% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 0;
-  }
-  92% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @keyframes carousel {
   0% {
     opacity: 1;
@@ -52,35 +35,27 @@ body {
   background: transparent no-repeat center top fixed;
   background-size: cover;
   position: fixed;
-  -webkit-animation-name: carousel;
-          animation-name: carousel;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-duration: 32s;
-          animation-duration: 32s;
+  animation-name: carousel;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 32s;
 }
 .carousel .item.item1 {
   background-image: url(../images/background-4.png);
-  -webkit-animation-delay: 24s;
-          animation-delay: 24s;
+  animation-delay: 24s;
 }
 .carousel .item.item2 {
   background-image: url(../images/background-3.png);
-  -webkit-animation-delay: 16s;
-          animation-delay: 16s;
+  animation-delay: 16s;
 }
 .carousel .item.item3 {
   background-image: url(../images/background-2.png);
   background-position: center 20%;
-  -webkit-animation-delay: 8s;
-          animation-delay: 8s;
+  animation-delay: 8s;
 }
 .carousel .item.item4 {
   background-image: url(../images/background-1.png);
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
 }
 .container {
   position: relative;
@@ -136,7 +111,7 @@ aside ul li a {
   color: #ffffff;
 }
 section {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 0 0 300px;
 }
 section h2 {
@@ -185,7 +160,6 @@ section.page-music li.sound {
   border: 1px solid red;
   box-sizing: border-box;
 }
-
 .fb-follow {
   padding-top: 30px;
 }

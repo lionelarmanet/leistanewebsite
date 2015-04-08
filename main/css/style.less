@@ -147,7 +147,7 @@ section {
 		margin: 0;
 		> li {
 			display: inline-block;
-		}		
+		}
 		.pitch {
 			font-size: 0.7rem;
 		}
@@ -194,4 +194,18 @@ section {
 
 .fb-follow {
 	padding-top: 30px;
+}
+
+/* media queries */
+
+@media only screen
+    and (max-device-width: 480px) {
+	section {
+		&.page-bio {
+			p {
+  				font-size: 0.6rem;
+			}
+		}
+	}
+
 }

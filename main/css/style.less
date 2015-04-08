@@ -199,13 +199,21 @@ section {
 /* media queries */
 
 @media only screen
-    and (max-device-width: 480px) {
+    and (min-device-width: 320px)
+    and (max-device-width: 736px)  {
+
 	section {
 		&.page-bio {
 			p {
   				font-size: 0.6rem;
+  				max-width: 100%;
 			}
 		}
+		padding-left: 150px;
+	}
+
+	aside {
+		width: 100px;
 	}
 
 }

@@ -26,6 +26,7 @@
   var del = require('del');
   var runSequence = require('run-sequence');
   var browserSync = require('browser-sync');
+  var debug = require('gulp-debug');
   var pagespeed = require('psi');
   var reload = browserSync.reload;
   /*var swPrecache = require('sw-precache');
@@ -105,7 +106,7 @@
       }))
       .pipe($.less({
         precision: 10,
-        onError: console.error.bind(console, 'Sass error:')
+        onError: console.error.bind(console, 'Less error:')
       }))
       .pipe($.autoprefixer({
         browsers: AUTOPREFIXER_BROWSERS
@@ -120,18 +121,33 @@
       }));
   });
 
+  // Compile and automatically prefix stylesheets
+  gulp.task('scripts', function() {
+    // For best performance, don't add Sass partials to `gulp.src`
+    return gulp.src(
+        'main/scripts/**/*.js'
+      )
+      .pipe($.sourcemaps.init())
+      .pipe($.uglify())
+      .pipe($.sourcemaps.write())
+      .pipe(gulp.dest('.tmp/scripts'))
+      // Concatenate and minify styles
+      .pipe(gulp.dest('dist/scripts'))
+      .pipe($.size({
+        title: 'scripts'
+      }));
+  });
+
   // Scan your HTML for assets & optimize them
   gulp.task('html', function() {
-    var assets = $.useref.assets({
-      searchPath: '{.tmp,main}'
-    });
+    var assets = $.useref.assets();
 
     return gulp.src('main/**/*.html')
       .pipe(assets)
       // Concatenate and minify JavaScript
-      .pipe($.if('*.js', $.uglify({
+      .pipe($.if('**/*.js', debug($.uglify({
         preserveComments: 'some'
-      })))
+      }))))
       // Remove any unused CSS
       // Note: if not using the Style Guide, you can delete it from
       //       the next line to only include styles your project uses.
@@ -173,7 +189,7 @@
     });
 
     gulp.watch(['main/**/*.html'], reload);
-    gulp.watch(['main/styles/**/*.{scss,css}'], ['styles', reload]);
+    gulp.watch(['main/styles/**/*.{less,css}'], ['styles', reload]);
     gulp.watch(['main/scripts/**/*.js'], ['jshint']);
     gulp.watch(['main/images/**/*'], reload);
   });
@@ -194,7 +210,7 @@
   // Build production files, the default task
   gulp.task('default', ['clean'], function(cb) {
     runSequence(
-      'styles', ['jshint', 'html', 'images', 'fonts', 'copy'],
+      'styles', 'scripts', ['jshint', 'html', 'images', 'fonts', 'copy'],
       cb);
   });
 

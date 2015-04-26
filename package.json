@@ -17,10 +17,17 @@
   },
   "homepage": "https://github.com/julien-reboul/leistanewebsite",
   "devDependencies": {
+    "auto-reload-brunch": "^1.7.8",
+    "brunch": "^1.8.2",
+    "css-brunch": "^1.7.0",
     "grunt": "~0.4.1",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-connect": "^0.9.0",
     "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^3.1.0"
+    "javascript-brunch": "^1.7.1",
+    "less-brunch": "^1.8.1",
+    "load-grunt-tasks": "^3.1.0",
+    "static-html-brunch": "^1.8.0",
+    "uglify-js-brunch": "^1.7.8"
   }
 }

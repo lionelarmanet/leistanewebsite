@@ -1,0 +1,117 @@
+(function() {
+  'use strict';
+
+  var globals = typeof window === 'undefined' ? global : window;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var has = ({}).hasOwnProperty;
+
+  var aliases = {};
+
+  var endsWith = function(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  };
+
+  var unalias = function(alias, loaderPath) {
+    var start = 0;
+    if (loaderPath) {
+      if (loaderPath.indexOf('components/' === 0)) {
+        start = 'components/'.length;
+      }
+      if (loaderPath.indexOf('/', start) > 0) {
+        loaderPath = loaderPath.substring(start, loaderPath.indexOf('/', start));
+      }
+    }
+    var result = aliases[alias + '/index.js'] || aliases[loaderPath + '/deps/' + alias + '/index.js'];
+    if (result) {
+      return 'components/' + result.substring(0, result.length - '.js'.length);
+    }
+    return alias;
+  };
+
+  var expand = (function() {
+    var reg = /^\.\.?(\/|$)/;
+    return function(root, name) {
+      var results = [], parts, part;
+      parts = (reg.test(name) ? root + '/' + name : name).split('/');
+      for (var i = 0, length = parts.length; i < length; i++) {
+        part = parts[i];
+        if (part === '..') {
+          results.pop();
+        } else if (part !== '.' && part !== '') {
+          results.push(part);
+        }
+      }
+      return results.join('/');
+    };
+  })();
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var module = {id: name, exports: {}};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var require = function(name, loaderPath) {
+    var path = expand(name, '.');
+    if (loaderPath == null) loaderPath = '/';
+    path = unalias(name, loaderPath);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    var dirIndex = expand(path, './index');
+    if (has.call(cache, dirIndex)) return cache[dirIndex].exports;
+    if (has.call(modules, dirIndex)) return initModule(dirIndex, modules[dirIndex]);
+
+    throw new Error('Cannot find module "' + name + '" from '+ '"' + loaderPath + '"');
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          modules[key] = bundle[key];
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+    }
+  };
+
+  require.list = function() {
+    var result = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
+  require.brunch = true;
+  globals.require = require;
+})();
+require.register("main/index", function(exports, require, module) {
+module.exports = "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <title>Leistane</title>\n    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css\">\n    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css\">\n    <link rel=\"stylesheet\" href=\"css/style.css\">\n    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>\n    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>\n</head>\n<body class=\"\">\n    <div class=\"carousel\">\n        <div class=\"item item1\">\n        </div>\n        <div class=\"item item2\">\n        </div>\n        <div class=\"item item3\">\n        </div>\n        <div class=\"item item4\">\n        </div>\n    </div>\n    <div class=\"container\">\n        <header id=\"home\" class=\"page\">\n            <h1>\n                <img  src=\"images/logo.png\" alt=\"Leistane\">\n            </h1>\n        </header>\n        <section id=\"bio\" class=\"page page-bio\">\n            <h2 >indie<br>rock<br>grenoble</h2>\n            <p  class=\"section-content\">\n                Tout commence avec la rencontre entre Julien (à la batterie) et Lionel (à la guitare), ils forment alors un groupe de reprises rock.\n                <br/>\n                Après quelques scènes, ils décident de se consacrer à un projet plus personnel : créer et jouer leur musique. Sophie (à l'écriture et au chant) les rejoint en 2013. L'aventure prend donc un nouvel élan, et plusieurs compositions voient le jour. L'arrivée de Gauthier (à la basse) complète la formation. Il signe la finalisation des arrangements des morceaux.\n            </p>\n            <p class=\"section-content\">\n                Voilà Leistane! Des chansons originales aux textes personnels, aux mélodies entêtantes, et aux influences pop rock.\n            </p>\n        </section>\n        <section id=\"photo\" class=\"page page-photos\">\n            <h2 >photos</h2>\n            <div  class=\"section-content\">\n                <ul class=\"stuff-list photos\">\n                    <li class=\"photo\">\n                        <a href=\"images/10505190_1035524499810616_2513253708516647403_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10505190_1035524499810616_2513253708516647403_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11073467_1035523813144018_8038510184967613832_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11073467_1035523813144018_8038510184967613832_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/10604605_1035523949810671_1769945012658533805_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10604605_1035523949810671_1769945012658533805_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11073475_1035523169810749_198189413075242969_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11073475_1035523169810749_198189413075242969_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/10631117_1035525173143882_2412592019119468833_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10631117_1035525173143882_2412592019119468833_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11075077_1035523459810720_1795924116900066050_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11075077_1035523459810720_1795924116900066050_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/10658690_1035524976477235_1582251222865454347_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10658690_1035524976477235_1582251222865454347_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11078018_1035524816477251_454725717226517350_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11078018_1035524816477251_454725717226517350_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n<!--                     <li class=\"photo\">\n                        <a href=\"images/10842267_1035524149810651_5465758765384459280_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10842267_1035524149810651_5465758765384459280_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n -->\n \t\t\t\t\t<li class=\"photo\">\n                        <a href=\"images/11078073_1035523649810701_1259052531859060746_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11078073_1035523649810701_1259052531859060746_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/10845596_1035523829810683_2144898494357553385_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10845596_1035523829810683_2144898494357553385_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11079515_1035522876477445_5531345644148285732_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11079515_1035522876477445_5531345644148285732_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/10857134_1035524279810638_2930381538381203217_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10857134_1035524279810638_2930381538381203217_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11080344_1035523006477432_7685903270874570326_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11080344_1035523006477432_7685903270874570326_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11080582_1035525306477202_7527043917078018033_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11080582_1035525306477202_7527043917078018033_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n<!--                     <li class=\"photo\">\n                        <a href=\"images/10998071_1035523753144024_2863659185233450820_n.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/10998071_1035523753144024_2863659185233450820_n_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li> -->\n                    <li class=\"photo\">\n                        <a href=\"images/11080852_1035524623143937_2148280813638998901_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11080852_1035524623143937_2148280813638998901_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11000563_1035523269810739_5992840213535746240_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11000563_1035523269810739_5992840213535746240_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11081113_1035524479810618_8617589503946559371_n.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11081113_1035524479810618_8617589503946559371_n_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11010512_1035522939810772_7039366601759589708_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11010512_1035522939810772_7039366601759589708_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11082359_1035524273143972_731372247210829174_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11082359_1035524273143972_731372247210829174_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11026335_1035522809810785_1212225779002944577_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11026335_1035522809810785_1212225779002944577_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11096400_1035522996477433_2138590521201809707_n.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11096400_1035522996477433_2138590521201809707_n_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n<!--                     <li class=\"photo\">\n                        <a href=\"images/11053261_1035524136477319_2666923208237358962_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11053261_1035524136477319_2666923208237358962_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li> -->\n                    <li class=\"photo\">\n                        <a href=\"images/11096482_1035525293143870_1552204358956638291_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11096482_1035525293143870_1552204358956638291_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11059515_1035523359810730_2082895086756581610_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11059515_1035523359810730_2082895086756581610_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n<!--                     <li class=\"photo\">\n                        <a href=\"images/11099180_1035524259810640_4942825501073410993_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11099180_1035524259810640_4942825501073410993_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li> -->\n                    <li class=\"photo\">\n                        <a href=\"images/11060022_1035525036477229_9147631060060238806_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11060022_1035525036477229_9147631060060238806_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11109544_1035524686477264_1127479415338092761_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11109544_1035524686477264_1127479415338092761_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11067457_1035522899810776_5914111183190523164_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11067457_1035522899810776_5914111183190523164_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n<!--                     <li class=\"photo\">\n                        <a href=\"images/11110585_1035524046477328_1226836473440005638_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11110585_1035524046477328_1226836473440005638_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li> -->\n                    <li class=\"photo\">\n                        <a href=\"images/11069878_1035525153143884_7388346801802542077_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11069878_1035525153143884_7388346801802542077_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/1510921_1035524789810587_3686056944689526254_n.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/1510921_1035524789810587_3686056944689526254_n_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/11071527_1035522826477450_6403170486162030531_n.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/11071527_1035522826477450_6403170486162030531_n_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n                    <li class=\"photo\">\n                        <a href=\"images/1966321_1035523559810710_2650857354354967385_o.jpg\" rel=\"group\" class=\"fancybox\">\n                            <img src=\"images/1966321_1035523559810710_2650857354354967385_o_min.jpg\" height=\"80px\" alt=\"\"/>\n                        </a>\n                    </li>\n\n                </ul>\n            </div>\n        </section>\n        <section id=\"video\" class=\"page page-videos\">\n            <h2 >vidéos<br>live</h2>\n            <div  class=\"section-content\">\n                <ul class=\"stuff-list videos\">\n                    <li class=\"video\">\n                        <iframe width=\"335\" height=\"188\" src=\"https://www.youtube.com/embed/u79q4ZhfCXc\" frameborder=\"0\" allowfullscreen></iframe>\n                        <p class=\"pitch\">\n                            <strong>Anaïs</strong>, Live 2015\n                        </p>\n                    </li>\n                    <li class=\"video\">\n                        <iframe width=\"335\" height=\"188\" src=\"https://www.youtube.com/embed/eHmrUa7LxHQ\" frameborder=\"0\" allowfullscreen></iframe>\n                        <p class=\"pitch\">\n                            <strong>Live Jack Sonne Five</strong>, à La Source le 04/2015\n                        </p>\n                    </li>\n                    <li class=\"video\">\n                        <iframe width=\"335\" height=\"188\" src=\"https://www.youtube.com/embed/9PCM7RgdKqM\" frameborder=\"0\" allowfullscreen></iframe>\n                        <p class=\"pitch\">\n                            Clip <strong>Yo N Rock Everybody</strong>\n                        </p>\n                    </li>\n                </ul>\n            </div>\n        </section>\n        <section id=\"musique\" class=\"page page-music\">\n            <h2 >musique</h2>\n            <div  class=\"section-content\">\n                <ul class=\"stuff-list sounds\">\n                    <li class=\"sound\">\n\t\t\t\t\t\t<iframe width=\"100%\" height=\"450\" scrolling=\"no\" frameborder=\"no\" src=\"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/101483425&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false\"></iframe>                    \t\n                    </li>\n                </ul>\n            </div>\n        </section>\n    </div>\n    <aside>\n        <nav>\n            <a href=\"#home\" title=\"Accueil\" class=\"home\">\n                <img src=\"images/logo-mini.png\" alt=\"Leistane\">\n            </a>\n            <ul>\n                <li><a href=\"#bio\" title=\"Biographie\">#bio</a></li>\n                <li><a href=\"#photo\" title=\"Vidéos\">#photo</a></li>\n                <li><a href=\"#video\" title=\"Vidéos\">#video</a></li>\n                <li><a href=\"#musique\" title=\"Musique\">#musique</a></li>\n            </ul>\n            <div class=\"fb-follow\" data-href=\"https://www.facebook.com/leistane\" data-colorscheme=\"dark\" data-layout=\"button\" data-show-faces=\"true\"></div>\n        </nav>\n    </aside>\n    <div id=\"fb-root\"></div>\n    <script src=\"//code.jquery.com/jquery-1.11.2.min.js\"></script>\n    <script src=\"//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.1.0/lodash.min.js\"></script>\n    <script src=\"//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js\" type=\"text/javascript\"></script>\n    <script src=\"//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js\" type=\"text/javascript\" async defer></script>\n    <script src=\"//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.js\" type=\"text/javascript\" async defer></script>\n    <script src=\"js/nav.js\" type=\"text/javascript\" charset=\"utf-8\" async defer></script>\n</body>\n</html>";
+});
+
+
+//# sourceMappingURL=index.html.map

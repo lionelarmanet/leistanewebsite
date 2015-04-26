@@ -26,7 +26,6 @@
   var del = require('del');
   var runSequence = require('run-sequence');
   var browserSync = require('browser-sync');
-  var debug = require('gulp-debug');
   var pagespeed = require('psi');
   var reload = browserSync.reload;
   /*var swPrecache = require('sw-precache');
@@ -145,9 +144,9 @@
     return gulp.src('main/**/*.html')
       .pipe(assets)
       // Concatenate and minify JavaScript
-      .pipe($.if('**/*.js', debug($.uglify({
+      .pipe($.if('**/*.js', $.uglify({
         preserveComments: 'some'
-      }))))
+      })))
       // Remove any unused CSS
       // Note: if not using the Style Guide, you can delete it from
       //       the next line to only include styles your project uses.

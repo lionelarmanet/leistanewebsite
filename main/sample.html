@@ -1,0 +1,324 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <title>Leistane - The Band</title>
+    
+    <meta name="author" content="Julien Reboul" />
+
+    <link href="css/sample-impress.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="intro" class="step" data-x="-750" data-y="-2000">
+        <em>ES6</em> - <em>ES2015</em><br/>
+        <em>Harmony</em> - <em>es-next</em>
+    </div>
+    <div id="intro-2" class="step" data-x="500" data-y="-2000" data-rotate="90">
+        <div>Managed by the European Computer Manufacturers Association</div>
+        <div>ECMAScript® 2015 Language Specification</div>
+        <div>Improve ES5 (published in 2009)</div>
+        <div>So expected...</div>
+        <span>Plastic bags are available under your seats</span>
+    </div>
+    <div id="intro-3" class="step" data-x="-750" data-y="-1200" data-z="-3000" data-rotate="280" data-scale="1">
+        <h2>And yet, nothing's new...</h2>
+    </div>
+    <div id="intro-4" class="step" data-x="750" data-y="-1200">
+        <div>All concepts are implemented in ES5</div>
+        <div>It's just Syntaxic sugar to ES5</div>
+        <div>So...</div>
+    </div>
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <h1>Ouate de Phoque !?</h1>
+        <h5>Should I give a damn?</h5>
+    </div>
+    
+    <div class="step yes" data-x="-1000" data-y="-500" data-rotate="-180" data-z="-2500">
+        <h3>ES6 not even available in most browser yet...</h3>
+    </div>
+
+<div class="step yes" data-x="-1000" data-y="-500" data-rotate="-180" data-z="-2500" data-rotate-x="90">
+    <h3>So we must call the A Team to have it work...</h3>
+    <ul>
+        <li>Babel <img src="https://media.giphy.com/media/JbzlnJr0NedJ6/giphy.gif" height="120" alt="mister T"></li>
+        <li>Typescript <img src="https://media.giphy.com/media/8dx7Q9AXiMM24/giphy.gif" height="120" alt="baracuda"></li>
+        <li>Traceur <img src="https://media.giphy.com/media/8UvC6xfiBEpiM/giphy.gif" alt="looping" height="120"></li>
+    </ul>
+</div>
+    
+    <div class="step yes" data-x="-600" data-y="500" data-z="-3333" data-rotate="-90" >
+        <h1>But trust me :</h1>
+    </div>
+    
+    <div class="step yes" data-x="-200" data-y="500" data-z="-2666" data-rotate="-90" >
+        <h1>Yes,</h1>
+    </div>
+    
+    <div class="step yes" data-x="250" data-y="500" data-z="-2000" data-rotate="-90" >
+        <h1>you</h1>
+    </div>
+    
+    <div class="step yes" data-x="750" data-y="500" data-z="-1333" data-rotate="-90" >
+        <h1>should</h1>
+    </div>
+    
+    <div class="step yes" data-x="1250" data-y="500" data-z="-666" data-rotate="-90" >
+        <h1>care!</h1>
+    </div>
+
+    <div class="step yes" data-x="-2000" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <h4>Question : Who finds average JavaScript code clean ?</h4>
+    </div>
+
+    <div class="step yes" data-x="0" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <h4>Who have not read some crappy and messy JavaScript ?</h4>
+    </div>
+
+    <div class="step yes" data-x="2000" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <img height="300" src="http://s-www.ledauphine.com/images/2E2A1B77-21CF-48EA-8104-A3923562897B/LDL_V0_12/severin-moussel-gere-un-compte-qui-a-plus-de-58-000-abonnes-1394017958.jpg" alt="cacamou">
+        <h2>I never did !</h2>
+    </div>
+    <div class="step yes" data-x="0" data-y="1000" data-rotate-x="-90">
+        <h2>ES6 makes JavaScript code <b>clean</b>, <b>neat</b> and <b>simpler</b> !</h2>
+        <span>(don't forget to format...)</span>
+    </div>
+
+
+    <div class="step yes" data-x="-2000" data-y="1000" data-rotate-x="-90">
+        <span>Here come's the features.</span>
+        <h3>It's <b>business</b>, <br>it's <b>business</b> time !</h3>
+    </div>
+
+<div class="step features" data-x="-10000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Assignment Destructuring</h3>
+</div>
+<div class="step features" data-x="-10000" data-y="1000" data-z="-1600"data-rotate-x="-90">
+    <ul>
+        <li>var {foo} = pony is equivalent to var foo = pony.foo</li>
+        <li>var {foo: baz} = pony is equivalent to var baz = pony.foo</li>
+        <li>var {foo: {bar}} = { foo: { bar: 'baz' } } gets you bar: 'baz'</li>
+        <li>It also works for arrays, [a, b] = [0, 1] yields a: 0 and b: 1</li>
+        <li>You can skip items in an array, [a, , b] = [0, 1, 2], getting a: 0 and b: 2</li>
+        <li>default values, var {foo='bar'} = baz yields foo: 'bar' if baz.foo is undefined</li>
+        <li>Also work in function definition :function foo ({ a=1, b=2 }) {}</li>
+    </ul>
+</div>
+<div class="step features" data-x="-9000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Spread Operator and Rest Parameters</h3>
+    <span class="footnote"><sub>*</sub> double face ... operator</span>
+</div>
+<div class="step features" data-x="-9000" data-y="1000" data-z="-1700" data-rotate-x="-90">
+    <div>
+      <h4>Rest parameters is a better <em>arguments</em> for function</h4> 
+       <ul>
+            <li>function foo (...everything) {}</li>
+            <li>function foo (bar, ...rest) {}</li>
+        </ul>
+    </div>
+    <div>
+       <h4>Spread operator is also denoted with ... syntax, but </h4>
+        <ul>
+            <li>Avoids .apply when calling methods: [].push.apply(myArray, [1, 2, 3, 4]) become myArray.push(...[1, 2, 3, 4])</li>
+            <li>Easier concatenation [1, 2, ...[3, 4, 5], 6, 7]</li>
+            <li>Casts array-likes or iterables into an array, e.g [...document.querySelectorAll('img')]</li>
+            <li>combines with destructuring; [a, , ...rest] = [1, 2, 3, 4, 5] yields a: 1 and rest: [3, 4, 5]</li>
+        </ul>
+    </div>
+</div>
+<div class="step features" data-x="-8000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Arrow Functions</h3>
+</div>
+<div class="step features" data-x="-8000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Implicit return for single statement</li>
+        <li>No parenthesis for single parameter</li>
+        <li>Ease function inlining for functional programming :
+        [1,2,3,4,5,6].filter(element => x  % 2).reduce((acc, element) => acc + element, 0)</li>
+        <li>use brackets for multiple statement () => {} </li>
+        <li>
+            Warning : Bound to lexical scope !
+            this correspond au this de l'appelant.
+            Pratique mais dangereux dans certains cas (cf class & methods)
+        </li>
+    </ul>
+</div>
+
+<div class="step features" data-x="-7000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Template Literals</h3>
+</div>
+<div class="step features" data-x="-7000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Finally !!</li>
+        <li>
+<pre><code>var import = `/rest/${this.type}/${this.id}`
+var text = `Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. 
+Morbi vitae est eu eros consequat volutpat.`</code></pre></li>
+    <li> JavaScript expressions in the interpolation, such as `${2 * 3}` or `${foo()}`</li>
+    <li>Si vous avez faim: You can use tagged templates to change how expressions are interpolated fn`foo, ${bar} and ${baz}`</li>
+    </ul>
+</div>
+<div class="step features" data-x="-6000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Object Literals</h3>
+</div>
+<div class="step features" data-x="-6000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Instead of { foo: foo, bar: function(){} }, you can just do { foo, bar() {} }</li>
+        <li>Computed property names, { [prefix + 'Foo']: 'bar' }</li>
+    </ul>
+</div>
+<div class="step features" data-x="-5000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Classes</h3>
+</div>
+<div class="step features" data-x="-5000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Not “traditional” classes, syntax sugar on top of prototypal inheritance</li>
+        <li>Instance method: use Object literals to declare methods</li>
+        <li>Static methods with static keyword</li>
+        <li>Constructor method constructor()</li>
+        <li>Prototypal inheritance with a simple syntax class PonyFoo extends Foo {}</li>
+        <li>class Foo { bar(){}, static baz(){}}</li>
+        <li>No attributes definition (only for Typescript)</li>
+    </ul>
+</div>
+<div class="step features" data-x="-4000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Let and Const</h3>
+</div>
+<div class="step features" data-x="-4000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>alternatives to var</li>
+        <li>defines block-scoped variables: hoist to block</li>
+        <li>Temporal Dead Zone : even with hoisting, use of variable before definition within block raise an error</li>
+        <li>const is equivalent to define a variable final in Java</li>
+        <li>applied on function also applies block scoping</li>
+    </ul>
+</div>
+
+<div class="step features" data-x="-3000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+Fin de l'apéro, distribution de doliprane
+</div>
+
+<div class="step features" data-x="-2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Symbols</h3>
+</div>
+<div class="step features" data-x="-2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>A new primitive type in ES6</li>
+        <li>Symbols are immutable and unique. Symbol(), Symbol(), Symbol('foo') and Symbol('foo') are all different (the name is only for debugging purpose)</li>
+        <li>Symbols are of type symbol, thus: typeof Symbol() === 'symbol'</li>
+        <li>You can also create global symbols with Symbol.for(key)</li>
+        <li>reverse function with Symbol.keyFor(symbol)</li>
+        <li>Global means global across context (window, eval, iframe)</li>
+        <li>Symbol are hidden to ES5 functions and are accessible through Object.getOwnPropertySymbols</li>
+    </ul>
+</div>
+
+<div class="step features" data-x="-1000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>So what?</h3>
+</div>
+
+<div class="step features" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Iterators</h3>
+</div>
+<div class="step features" data-x="0" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Iterator and iterable protocol define how to iterate over any object, not just arrays and array-likes</li>
+        <li>Symbol allow to implement the iterable protocol: for an object to be iterable, it has to provide an iterable function to the Symbole.iterator attribute : var foo = { [Symbol.iterator]: iterable}</li>
+        <li>The iterable is a method that returns an iterator object that has a next method</li>
+        <li>The next method returns objects with two properties, value and done</li>
+        <li>Some built-ins like Array, String, or arguments – and NodeList in browsers – are iterable by default in ES6</li>
+        <li>Iterable objects can be looped over with for..of, such as for (let el of document.querySelectorAll('a'))</li>
+        <li>Iterators are lazy, and those that produce an infinite sequence still can lead to valid programs</li>
+    </ul>    
+</div>
+
+<div class="step features" data-x="1000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>
+        Generators
+    </h3>
+</div>
+<div class="step features" data-x="1000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Works as a factory for iterators.</li>
+        <li>A function becomes a generator if it contains one or more yield expressions and if it uses the function* syntax.</li>
+        <li>Compute their yielded values on demand</li>
+        <li>Generator functions return a generator object that’s adheres to both the iterable and iterator protocols</li>
+        <li>Generator function execution is suspended on yield, return,  throw and returning {done : true}</li>
+    </ul>
+</div>
+<div class="step features" data-x="1000" data-y="1000" data-z="-2500" data-rotate-x="-90">
+    <ul>
+        <li>
+        <pre class="javascript"><code>function* fibonacci(){
+  var fn1 = 1;
+  var fn2 = 1;
+  while (true){  
+    var current = fn2;
+    fn2 = fn1;
+    fn1 = fn1 + current;
+    var reset = yield current;
+    if (reset){
+        fn1 = 1;
+        fn2 = 1;
+    }
+  }
+}</code></pre></li>
+        <li>Pull values using Array.from(g), [...g], for (let item of g), or just calling g.next()</li>
+        <li>Asynchronous flows feel synchronous</li>
+    </ul>
+</div>
+
+<div class="step features" data-x="2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Promises</h3>
+</div>
+
+<div  class="step features" data-x="2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Manage the "pyramid of doom issue"</li>
+        <li>Behave like a tree : Add branches with p.then(handler) and p.catch(handler)</li>
+        <li><pre class="javascript"><code>new Promise((resolve, reject) => { /* resolver */ })</code></pre></li>
+        <li>Each call to p.then and p.catch creates another promise that’s blocked on p being settled</li>
+        <li>Promises can only be settled once, and then they’re settled. </li>
+    </ul>
+</div>
+Maps
+WeakMaps
+Sets
+WeakSets
+
+Proxies
+
+Reflection
+
+Number
+Math
+
+Array
+Object
+Strings and Unicode
+
+Modules : Tooling AMD (requireJS)/CommonJS (Browserify/WebPack)/SystemJS (JSPM)
+    </div-->
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+
+</div>
+
+    
+<script src="scripts/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

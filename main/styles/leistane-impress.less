@@ -268,13 +268,16 @@ pre > code {
         z-index: -1;   
     }
     img {
-        left: 22%;
+        left: 0;
         position: absolute;
     }
-    a {
-        font-size: 0.3em;
-        text-transform: none;
-        background: inherit;
+    .nav {
+        margin-top: 100px;
+        a {
+            font-size: 0.3em;
+            text-transform: none;
+            background: inherit;
+        }
     }
 }
 
@@ -679,13 +682,14 @@ pre > code {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 200px;
+    bottom: 0;
 
     background: rgba(0,0,0,0.5);
     color: #EEE;
     text-align: center;
 
-    font-size: 50px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 1.5em;
     padding: 20px;
 
     z-index: 100;
@@ -729,7 +733,7 @@ pre > code {
 /*
     ... and we will show it when the first step (with id 'bored') is active.
 */
-.impress-on-bored .hint {
+.impress-on-intro .hint {
     /*
         We remove the transparency and position the hint in its default fixed
         position.

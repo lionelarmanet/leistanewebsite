@@ -6,7 +6,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<style type="text/css">
 			html, body {
-				font-family:'Merriweather',serif;
+				font-family:'Verdana',serif;
+				font-size: 11;
+				text-align: center;
 			}
 			.logo {
 				background-color: #000;
@@ -20,64 +22,82 @@
 		</style>
 	</head>
 	<body>
-		<table width="100%">
+		<table width="100%" style="background-color:#f1f8fd;text-align: center;">
 		<tbody>
-			<tr height="32px"><td>&nbsp;</td></tr>
-			<tr align="center">
-				<td width="15%"></td>
-				<td width="15%" class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACJCAYAAADOgcGsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4MUIzNkU2RDI2NDhFNTExQTYwM0NDQjU5QUFENTU1QyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5QUE0RTQyMDUzM0MxMUU1QUU2RDkyNTA0NzczQUJCRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5QUE0RTQxRjUzM0MxMUU1QUU2RDkyNTA0NzczQUJCRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE1MDBGRDcyN0I1MkU1MTFCNkFCQkQ3MkQ1QjBCNTlDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjgxQjM2RTZEMjY0OEU1MTFBNjAzQ0NCNTlBQUQ1NTVDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+xxvK/AAACDdJREFUeNrsnU1vG8cZgGf2ixRJRXKUGG4+mjZB4oNbIKhPBQIURQwEKHpoTr4WRY855S/0GCDH/gb70ksQBOixQBLkkCCX1oei6CH9MBpLciiJIrncmc6Q74aj5YcVa2065PPAL0jKWpL7zjPvzs4uNFrduqcA6iaZ8zO9IODi2OCxGqvmu7R7+X1N5fvbeWKVbxRLpMFz5KpPLB+Fi1EQZoWChe2eBBEtaPfyOxaV/SiC/ZgRy795w8WWRLPyIXBxsXzycxcDFz0Xpy6G0jirqlRJpd0bUliiJfuRy/fuy34M5GdjuZKKtZmLjotdibbIFeNEbWIV0ghHLu67OAyEK1YgVRS0+yUXO/I8W9LuZec4cdGV/ejKz021YsUi0VMuLrt4Vj5ki4pVu1in0hipVKpcoljBd1rU7o0F7V4esofSOQ7kd0ZB5bVVsRpi69O/fi77yTuvNm+0E92x1iJVXSVCa9vNTffmJ8e3jkc2l55+7GWzN/ce73e5vR8Of7Z9u//ux43rv3+leaOwKl7W7pHW5svD0Z13vjj5UDrKkXSUQVixdDBg9xWq89p29MJbV9I3UOGRlC0ba/WhDDUawThWrahi+cNey8t1bSd5+ed7yfXzbLiTar/NX2TbhryX348imjN49zuZHQytPRzaLhrUz9d9cz83406crliqcowVyfdID4bm3CcR9wamJ1KmgVSTirbo9NNaF4yrHsdpfvh6VUSBZBeZ//p2PyLaF2ruLGqpWFo/EbPB8P040515Hs35pfFchBtcqiyae8kH4FzH1pJygm48K9yIdB4zwoKHJKlUqmE5J/HBf4Z/vds3f2wnut0vLIfF+ceAyFgVj6xKXY70+6+3f3ltJ36RzJydeQ8vNdz7qmfsV73hoZrOwMJstS/n/fx8VOswtyekZbZilWJ9I697krQUseYSS378pZBnfI62Yq6pzqtY5YXFnkjWU9OJL0Zbs/jcdGT40JCqxZBhjlie8t4g/9hX00kzxJolk46YSScckpL5YoU3cJXVSyHVQnLJX7/skJqKtbBiVSVTDyrvj/uK/JOCvr0f3vX5pNxe/ESd2QAgFiAWIBYAYgFiAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWIBYAYgFiAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWrCm1rEcoq6GPn6rZpVzXOXc+yiVh6KQ1iqVFqqiS6GgDEu3X0vHr5/iFmsYrpLGGdo1iiUg+sU1JcqamK7PrNc+dF2vHRUv2G2oUK5ME76rJEmsd+dm6L7FWdqiO7HdTUbFqESusVj6xl9Vk3b4dSfK6HwrLw39DKnWzm9scpeqpWGGvffqNZ5Kr717dumHc+KOw679okbVKG2X98r06N0pf3Y6voFQ9FatcvtZXqM5Pd5OX3n4he5O0QlTD9rHIlR0OWZQc6hGrrFybMncFj1GsUDCA2sSylUeAC4sVLltrsoiqBRc/KxzLpCaLk/sV3AfutLvXL+xAa3cabjengtnJ1INpxjqL9dpPDD9ysZSarnbfc9H907+Gf/vsYPQHVwa3hsaaNc+ddkLFLhLXidJ+oZKPfrH9q+uXkpfRqh6xBi6OXez3Cmv/flR0lVyU3YBhhJ9m8bPu2y7ag0Ix817TodAfBvu+WsnrEzWZLE3UZtw246Xyl7BGXrRGzK0zdVaskQhVPqZq/e9sULKfHdnvpjznzLgmsZQkthSsrzZnojSTffaH/VMZa0JNYll7c0/JIbHQt/dHG5S7QqQaiGCFpmLVWrGmlt3c25jEuk5kOfQtP7MBQCxALEAsAMQCxALEAkAsQCxALADEAsQCxAJALEAsQCwAxALEAsQCQCxALEAsAMQCxALEAkAsQCxALADEAsQCxAJALEAsQCwAxALEAsQC+E4s+qvJ+gGvp/9xe3+TO2X4N+1Z+WyBWDpIWCyPUVDVSNxZ/MoULTX5W+/j1TgsOVpYsRJJUkMiCSSDWbHaLp5SkzV1MlIyX6wo6IU+WR1JWIpYC3Pn19DZkXw1qOqzYmmpTA1J1GUXfi2TbbUZS8Q9DFpNl5XznbB5WoyXQYFKxSrF8knae24r+uHPLiU/asWq1Tcs7TFPLGtVZFzeRsYmA6Pi3VS3SMtsxYpknDA+FP7m+ezae6+3ftuKSRY83CmzqpwNjgfvA2NTYxkzwMXFCitXVLiD39CoESmCOsT6Fku1gvOfxJxfLIBzYs8r1niBR62VjTRV65F08UleqwtprvLM28jnm4fYD1XZF1sVq1yV3o+rhjupVi7aaFA/u2nUTqPxGtK5mq6pvapqY9R0Te98N9XxeTd2fvhZhKHEmf1IKlL5HfULZx//49j8+89384/bie5Ya6lctVUrbbu5cf9U1708UdM1pVclVyFi9Fwc3ekW//x0f/S5O3mLl7V7pLX58nB0xz3tyrZDeS8zGXjdulcOwPw0g59p9zPuV1w8qyaz8FtqeiUfLl4hCum89138z8V/XRyIZPkKBt5Z0O4/CNq9saDdy8OeF+nIhb+95a6Lr11846Lv5Uoq5vbFwEg29Dvvr4fFOFGrWD7Px5LfI8n1KitW2e6xVND7Ily8ZEyWS2foyu/3pPLa6qGwtPBYPqwnUiVUrNrHNLk0YE+qV74iscrvE7b7iQpuBVqyXS7bnUoMZPszY6ywN5XH/L4YG6uzN7TBxRoyPEkarXh8VX6nUfB4WikmesH0QlHZjyI4u5wRy1YG8hqpHsmcj50Tq5bdBgP5B7W7rUxT2OqUSbLkg2Azq2kt/F+AAQDoe2JJWw5yggAAAABJRU5ErkJggg==" alt="Logo Leistane"></td>
-				<td width="55%">
-					<table width="100%">
+			<tr>
+				<td align="center" style="padding:0;">
+					<table style="padding:0;" width="600px">
 						<tbody>
-							<tr height="50px" align="center">
-								<td class="header" style="background-color: #BBB;">Leistane</td>
+							<tr style="padding:0;" width="100%">
+								<td height="10px" style="background-color: #999;padding:0;line-height:1px;font-size:1px;">&nbsp;</td>
 							</tr>
-							<tr height="500px">
-								<td>
-									<p>
-									Bonjour, <br>
-									<br>
-									Des chansons originales aux textes personnels, aux mélodies entêtantes, et aux influences pop rock, voilà Leistane ! <br>
-<br>
-									Groupe grenoblois, nous cherchons à nous produire, alors pour nous écouter, nous voir et en savoir plus il suffit de cliquer... <br>
-<br>
-									<ul>
-										<li>
-											
-									<a href="http://leistane.fr">site internet</a>
-										</li>
-										<li>
-											
-									Facebook : https://www.facebook.com/leistane?ref=ts&fref=ts
-										</li>
-										<li>
-									Youtube : http://www.youtube.com/watch?v=MocaybW51Ss 
-											
-										</li>
-										<li>
-											
-									soundcloud: https://soundcloud.com/leistane/sets/live-a-vos-jack-2016
-										</li>
-										
-									</ul>
-
-									En pièce jointe vous trouverez la fiche de programmation ainsi que la fiche technique du groupe. 
-
-									Dans l'attente de vous lire
-
-									Cordialement
-									</p>
-								</td>
+							<tr style="padding:0;" align="center" width="100%">
+								<td height="30px" style="background-color: #000;padding:0;"><img height="50px" src="cid:logo" alt="Logo"></td>
+							</tr>
+							<tr style="padding:0;" width="100%">
+								<td height="10px" style="background-color: #999;padding:0;line-height:1px;font-size:1px;">&nbsp;</td>
+							</tr>
+							
+						</tbody>
+					</table>
+					<table width="600px" style="padding:0;background-color:#FFF;">
+						<tbody>
+							<tr>
+								<td height="25px">&nbsp;</td>
 							</tr>
 							<tr>
-								<td></td>
+								<td width="30px">&nbsp;</td>
+								<td>
+									<table style="padding:0;text-align: center;">
+										<tbody>
+											<tr style="padding:0;text-align: center;">
+												<td>
+													<p>
+									Bonjour, <br>
+									<br>
+									Des chansons originales aux textes personnels, aux mélodies entêtantes, et aux influences pop rock, voilà <b>Leistane</b> ! <br>
+<br>
+									Groupe <b>grenoblois</b>, nous cherchons à nous produire, alors pour nous écouter, nous voir et en savoir plus il suffit de cliquer... <br><br>
+									<a href="http://leistane.fr">leistane.fr</a><br><br>
+									<a href="https://www.facebook.com/leistane?ref=ts&amp;fref=ts" title="Facebook"><img src="cid:fb" height="25px" alt="facebook"></a>
+									<a href="http://www.youtube.com/watch?v=MocaybW51Ss" title="Youtube"><img src="cid:youtube" height="25px" alt="Youtube"></a>
+									<a href="https://soundcloud.com/leistane/" title="Soundcloud"><img src="cid:soundcloud" height="25px"></a>
+									<br><br>
+									En pièce jointe vous trouverez la fiche de programmation ainsi que la fiche technique du groupe. 
+<br>
+<br>
+									Dans l'attente de vous lire
+<br>
+<br>
+									Cordialement
+									</p>
+												</td>
+											</tr>
+											<tr align="center"><td><img src="cid:by" height="110px" alt="By herself"> <img src="cid:all" height="110px" alt="tous"></td></tr>
+											<tr align="center">
+												<td>
+													<img src="cid:lio" height="85px" alt="lio">
+													<img src="cid:clap" height="85px" alt="Clap">
+													<img src="cid:gau" height="85px" alt="Gauth">
+													<img src="cid:ju" height="85px" alt="Ju">
+												</td>
+											</tr>
+											<tr align="center">
+												<td>
+													<img src="cid:hin" width="150px" alt="hinhinhin">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</td>
+								<td width="30px">&nbsp;</td>
+								
 							</tr>
 						</tbody>
 					</table>
 				</td>
-				<td width="15%"></td>
 			</tr>
-			<tr></tr>
 		</tbody>
 		</table>
 	</body>

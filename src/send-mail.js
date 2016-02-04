@@ -9,12 +9,12 @@ var transporter = nodemailer.createTransport('smtps://leistane%40gmail.com:quadr
 // setup e-mail data with unicode symbols 
 var mailOptions = {
     from: 'Leistane<leistane@gmail.com>', // sender address 
-    to: ['herbert.de.vaucanson@gmail.com', 'lionel.armanet@gmail.com', 'sophie.melenotte@gmail.com', 'gauthier.delemme@gmail.com'], // list of receivers 
+    to: ['"guillaume.champion4@gmail.com" <guillaume.champion4@gmail.com>'], // list of receivers 
     subject: 'Leistane dans face (funky!) ✔', // Subject line 
     html: fs.readFileSync('./src/mail-presentation.html'),
     attachments: [{
-        filename: 'logo.png',
-        path: 'main/images/logo.png',
+        filename: 'photologo.png',
+        path: 'src/img/photologo.jpg',
         cid: 'logo'
     }, {
         filename: 'all.png',

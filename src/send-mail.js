@@ -9,7 +9,7 @@ var transporter = nodemailer.createTransport('smtps://leistane%40gmail.com:quadr
 // setup e-mail data with unicode symbols 
 var mailOptions = {
     from: 'Leistane<leistane@gmail.com>', // sender address 
-    to: ['"guillaume.champion4@gmail.com" <guillaume.champion4@gmail.com>'], // list of receivers 
+    to: ['lionel.armanet@gmail.com', 'lionel.armanet@gmail.com', 'gauthier.delemme@gmail.com', 'sophie.melenotte@gmail.com', 'guillaume.champion4@gmail.com'], // list of receivers 
     subject: 'Leistane dans face (funky!) ✔', // Subject line 
     html: fs.readFileSync('./src/mail-presentation.html'),
     attachments: [{
@@ -56,10 +56,6 @@ var mailOptions = {
         filename: 'soundcloud.jpg',
         path: 'src/img/soundcloud.jpg',
         cid: 'soundcloud'
-    }, {
-        filename: 'leistane-fiche-technique.pdf',
-        path: 'src/fichtec-23112015.pdf',
-        contentType: 'application/pdf'
     }]
 };
  
